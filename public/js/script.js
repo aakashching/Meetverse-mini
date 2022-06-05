@@ -63,6 +63,10 @@ function init() {
 
 init();
 const joinFn = () => {
+  if (input.value.trim() === "") {
+    alert("invalid input");
+    return;
+  }
   console.log("joined");
   localVideo.classList.add("vid-move");
   videos.classList.add("videos-container");
