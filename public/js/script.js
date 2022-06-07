@@ -11,29 +11,40 @@ let vdoBtn = document.getElementById("vdoBtn");
 let exitBtn = document.getElementById("exit");
 let btnGrp = document.getElementById("btn-grp");
 let streams = {};
-const configuration = {
-  // Using From https://www.metered.ca/tools/openrelay/
+const configuration =  {
   iceServers: [
     {
-      urls: "stun:openrelay.metered.ca:80",
+      urls: "stun:stun4.l.google.com:19302",
     },
     {
-      urls: "turn:openrelay.metered.ca:80",
-      username: "openrelayproject",
-      credential: "openrelayproject",
-    },
-    {
-      urls: "turn:openrelay.metered.ca:443",
-      username: "openrelayproject",
-      credential: "openrelayproject",
-    },
-    {
-      urls: "turn:openrelay.metered.ca:443?transport=tcp",
-      username: "openrelayproject",
-      credential: "openrelayproject",
+      urls: "stun:stun.services.mozilla.com",
     },
   ],
 };
+
+// {
+//   // Using From https://www.metered.ca/tools/openrelay/
+//   iceServers: [
+//     {
+//       urls: "stun:openrelay.metered.ca:80",
+//     },
+//     {
+//       urls: "turn:openrelay.metered.ca:80",
+//       username: "openrelayproject",
+//       credential: "openrelayproject",
+//     },
+//     {
+//       urls: "turn:openrelay.metered.ca:443",
+//       username: "openrelayproject",
+//       credential: "openrelayproject",
+//     },
+//     {
+//       urls: "turn:openrelay.metered.ca:443?transport=tcp",
+//       username: "openrelayproject",
+//       credential: "openrelayproject",
+//     },
+//   ],
+// };
 
 let constraints = {
   audio: true,
