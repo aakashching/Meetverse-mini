@@ -247,3 +247,11 @@ function leaveMeeting() {
   localVideo.classList.remove("vid-move");
   socket.off("disconnect");
 }
+function shareMedia(){
+  navigator.mediaDevices.getDisplayMedia({audio:true,video:true}).then(stream=>{
+    for(let peer in peers){
+      peers[peer].addTrack(stream.getVideoTracks()[0],stream);
+    }
+  })
+}
+s

@@ -56,5 +56,32 @@ module.exports = (io) => {
       console.log("INIT SEND by " + socket.id + " for " + init_socket_id);
       socket.to(init_socket_id).emit("initSend", socket.id);
     });
+
+    //Screen Share
+    // socket.on("share",(data)=>{
+    //    // let room = rooms.get(data.roomId)
+    //    roomId = data.roomId;
+    //    let room = rooms.get(roomId);
+    //    if (room === undefined) {
+    //      socket.to(socket.id).emit("invalidRoom");
+    //      return;
+    //    }
+    //    socket.join(roomId);
+    //    clients = await io.in(roomId).allSockets();
+ 
+    //    //   for (let socketId of clients) {
+    //    //     console.log("clients", socketId);
+    //    //   }
+ 
+    //    // peers[socket.id] = socket;
+    //    for (let id of clients) {
+    //      console.log(id);
+    //      if (id === socket.id) continue;
+    //      console.log("sending init receive to", "sm-"+socket.id);
+    //      socket.to(id).emit("initReceive", "sm-"+socket.id);
+    //    }
+    // })
+
+
   });
 };
