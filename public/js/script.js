@@ -64,6 +64,9 @@ constraints.video.facingMode = {
 };
 function init() {
   navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+    
+    console.log(stream.getVideoTracks(),stream.getAudioTracks())
+    
     localStream = stream;
     localVideo.srcObject = stream;
     localVideo.onloadedmetadata = () => {
@@ -219,7 +222,7 @@ function toggleMute() {
     localStream.getAudioTracks()[0].enabled =
       !localStream.getAudioTracks()[0].enabled;
   }
-  if (localStream.getAudioTracks()[0].enabled) {
+  if (localStream.getAudioTracks()[0]?.enabled) {
     muteBtn.innerHTML = '<i class="bi bi-mic-fill"></i>';
   } else {
     muteBtn.innerHTML = '<i class="bi bi-mic-mute-fill"></i>';
@@ -232,7 +235,20 @@ function toggleVideo() {
   }
   if (localStream.getVideoTracks()[0].enabled) {
     vdoBtn.innerHTML = '<i class="bi bi-camera-video-fill"></i>';
+    // localVideo.srcObject=localStream;
+    // let streams = localVideo.srcObject.getVideoTracks();
+    // streams.forEach((track)=>track.start())
+    // init()
+    // for(let key in peers){
+    //   peers[key].addTrack(localStream.getVideoTracks()[0],localStream);
+    // }
   } else {
+    // let streams = localVideo.srcObject.getVideoTracks();
+    // streams.forEach((track)=>track.stop())
+    // localVideo.srcObject=null;
+    // for(let key in peers){
+    //   peers[key].removeTrack(localStream.getVideoTracks()[0],localStream);
+    // }
     vdoBtn.innerHTML = '<i class="bi bi-camera-video-off-fill"></i>';
   }
 }
@@ -247,11 +263,14 @@ function leaveMeeting() {
   localVideo.classList.remove("vid-move");
   socket.off("disconnect");
 }
+
+// for screen media share
 function shareMedia(){
   navigator.mediaDevices.getDisplayMedia({audio:true,video:true}).then(stream=>{
+    console.log(stream.getVideoTracks(),stream.getAudioTracks())
     for(let peer in peers){
       peers[peer].addTrack(stream.getVideoTracks()[0],stream);
+      peers[peer].addTrack(stream.getAudioTracks()[0],stream);
     }
   })
 }
-s
