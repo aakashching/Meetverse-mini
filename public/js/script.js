@@ -93,7 +93,6 @@ const joinFn = () => {
 
 createBtn.addEventListener("click", (e) => {
   console.log("clicked");
-
   socket.emit("create");
   socket.on("created", (data) => {
     let { roomId } = data;
@@ -253,6 +252,8 @@ function toggleVideo() {
   }
 }
 
+// to leave the meeting and destroy RTC peer connection
+
 function leaveMeeting() {
   for (let id in peers) {
     peers[id].destroy();
@@ -262,6 +263,7 @@ function leaveMeeting() {
   videos.classList.remove("videos-container");
   localVideo.classList.remove("vid-move");
   socket.off("disconnect");
+  socket=null;
 }
 
 // for screen media share

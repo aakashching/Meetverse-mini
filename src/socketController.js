@@ -56,6 +56,10 @@ module.exports = (io) => {
       console.log("INIT SEND by " + socket.id + " for " + init_socket_id);
       socket.to(init_socket_id).emit("initSend", socket.id);
     });
+    socket.on("sendMsg",(data)=>{
+      // socket.to(roomId).emit("msgRecive",data );
+      socket.to(data.roomId).emit("msgRecive",data );
+    })
 
     //Screen Share
     // socket.on("share",(data)=>{
