@@ -17,10 +17,10 @@ module.exports = (io) => {
       // let room = rooms.get(data.roomId)
       roomId = data.roomId;
       let room = rooms.get(roomId);
-      if (room === undefined) {
-        socket.to(socket.id).emit("invalidRoom");
-        return;
-      }
+      // if (room === undefined) {
+      //   socket.to(socket.id).emit("invalidRoom");
+      //   return;
+      // }
       socket.join(roomId);
       clients = await io.in(roomId).allSockets();
 
