@@ -196,6 +196,24 @@ function addPeer(socket_id, am_initiator) {
       newVid.className = "gird-items";
       newVid.onclick = () => openPictureMode(newVid);
       newVid.ontouchstart = (e) => openPictureMode(newVid);
+
+      // video events are stared here
+      newVid.addEventListener("suspend",()=>{
+        // newVid.parentNode.removeChild(newVid)
+        console.log("suspend");
+      })
+      newVid.addEventListener("play",()=>{
+        // newVid.parentNode.removeChild(newVid)
+        console.log("played");
+      })
+      newVid.addEventListener("end",()=>{
+        // newVid.parentNode.removeChild(newVid)
+        console.log("ended");
+      })
+      newVid.addEventListener("waiting",()=>{
+        // newVid.parentNode.removeChild(newVid)
+        console.log("waiting");
+      })
       videos.appendChild(newVid);
       streams[stream.id] = stream;
     }
