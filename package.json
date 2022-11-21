@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "alphastring": "^1.0.2",
     "express": "^4.18.1",
     "shortid": "^2.2.16",
     "simple-peer": "^9.11.1",

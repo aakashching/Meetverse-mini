@@ -1,4 +1,5 @@
 const shortid = require("shortid");
+const astring = require("alphastring")
 let rooms = {};
 let peers;
 
@@ -9,7 +10,8 @@ module.exports = (io) => {
     let clients;
     let roomId;
     socket.on("create", (data) => {
-      roomId = shortid.generate();
+      // roomId = shortid.generate();
+      roomId = astring(6);
       socket.join(roomId);
       socket.emit("created", { roomId: roomId });
     });
