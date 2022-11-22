@@ -3,7 +3,7 @@
     "builds": [
       {
         
-        "src": "src/app.js",
+        "src": "app.js",
         
         "use": "@now/node"
       }
