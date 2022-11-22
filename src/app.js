@@ -22,3 +22,5 @@ const port = process.env.PORT || 3000;
 httpServer.listen(port, () => {
     console.log('server is running on port 3000');
 })
+
+module.express=httpServer
