@@ -214,6 +214,8 @@ function addPeer(socket_id, am_initiator) {
         // newVid.parentNode.removeChild(newVid)
         console.log("waiting");
       })
+      stream.onended=()=>newVid.parentNode.removeChild(newVid)
+
       videos.appendChild(newVid);
       streams[stream.id] = stream;
     }
@@ -292,5 +294,10 @@ function shareMedia(){
       peers[peer].addTrack(stream.getVideoTracks()[0],stream);
       peers[peer].addTrack(stream.getAudioTracks()[0],stream);
     }
+    stream.getVideoTracks()[0].addEventListener("ended",()=>{
+      for(let peer in peers)
+      peers[peer].removeTrack(stream.getVideoTracks()[0],stream);
+      peers[peer].removeTrack(stream.getAudioTracks()[0],stream);
+    })
   })
 }
