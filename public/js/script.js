@@ -289,15 +289,16 @@ function leaveMeeting() {
 // for screen media share
 function shareMedia(){
   navigator.mediaDevices.getDisplayMedia({audio:true,video:true}).then(stream=>{
-    console.log(stream.getVideoTracks(),stream.getAudioTracks())
+    // console.log(stream.getVideoTracks(),stream.getAudioTracks())
     for(let peer in peers){
       peers[peer].addTrack(stream.getVideoTracks()[0],stream);
       peers[peer].addTrack(stream.getAudioTracks()[0],stream);
     }
     stream.getVideoTracks()[0].addEventListener("ended",()=>{
-      for(let peer in peers)
-      peers[peer].removeTrack(stream.getVideoTracks()[0],stream);
-      peers[peer].removeTrack(stream.getAudioTracks()[0],stream);
+      for(let peer in peers){
+        peers[peer].removeTrack(stream.getVideoTracks()[0],stream);
+        peers[peer].removeTrack(stream.getAudioTracks()[0],stream);
+      }
     })
   })
 }
