@@ -14,7 +14,7 @@ const io = require('socket.io')(httpServer, {
 require('./routes')(app)
 
 require('./socketController')(io)
-app.use(cors)
+
 app.use('/api',WeatherRoute)
 const port = process.env.PORT || 3000;
 
