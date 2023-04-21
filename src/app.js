@@ -2,6 +2,7 @@
 const express = require('express')
 const app = express()
 const httpServer = require('http').createServer(app)
+const cors = require('cors')
 const WeatherRoute = require('./routes/weather.route')
 const io = require('socket.io')(httpServer, {
     cors: {
@@ -13,7 +14,7 @@ const io = require('socket.io')(httpServer, {
 require('./routes')(app)
 
 require('./socketController')(io)
-// app.use(cros)
+app.use(cros)
 app.use('/api',WeatherRoute)
 const port = process.env.PORT || 3000;
 
