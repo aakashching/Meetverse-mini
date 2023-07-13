@@ -18,9 +18,6 @@ const getWeatherInfo = async (req, res) => {
   }
 };
 
-module.exports = {
-  getWeatherInfo,
-};
 
 const getWeatherDataByArea = async (req, res) => {
   let { q } = req.query;
@@ -35,4 +32,10 @@ const getWeatherDataByArea = async (req, res) => {
     console.log(error);
     res.json({ error: "invalid data" });
   }
+};
+
+
+module.exports = {
+  getWeatherInfo,
+  getWeatherDataByArea
 };
