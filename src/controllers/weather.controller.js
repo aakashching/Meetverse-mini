@@ -20,11 +20,11 @@ const getWeatherInfo = async (req, res) => {
 
 
 const getWeatherDataByArea = async (req, res) => {
-  let { q } = req.query;
-  console.log(lat, lon);
+  let { q } = req.query;;
+  if(!q) return res.status(401).send("invalid city name")
   // if(!lat & !lon) res.json({error:"invalid data"})
   try {
-    let data = await axios.get(`${apiUrl}?q=${city}&appid=${apiKey}`);
+    let data = await axios.get(`${apiUrl}?q=${q}&appid=${apiKey}`);
 
     // console.log(data)
     res.json(data.data);
